@@ -1,0 +1,10 @@
+<%= form_tag(controller: "calc", action: "sol") do %>
+<div class="q_num" style="display:inline-flex">
+問題数:<%= number_field_tag("q_num", "", {class:"form-control"}) %>
+</div>
+<br>
+<%= submit_tag("ゲームスタート") %>
+<%= hidden_field_tag("cnt", @cnt) %>
+<%= hidden_field_tag("collect", @collect) %>
+<% end %>
+<input type="button" value="charge" onclick="buttonClick()">
