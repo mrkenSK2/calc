@@ -1,9 +1,10 @@
-<%= form_tag(controller: "calc", action: "sol") do %>
+<%= javascript_pack_tag 'index' %>
+<%= form_tag({controller: "calc", action: "sol"}, {name: :"qinfo", onsubmit: "return checkPositive();"}) do %>
 <div class="q_num" style="display:inline-flex">
-問題数:<%= number_field_tag("q_num", "", {class:"form-control"}) %>
+問題数を数字で入力してください:　<input type="number" name="q_num">
 </div>
 <br>
-<%= submit_tag("ゲームスタート") %>
+<input type="submit" value="ゲームスタート">
 <%= hidden_field_tag("cnt", @cnt) %>
 <%= hidden_field_tag("collect", @collect) %>
 <% end %>
