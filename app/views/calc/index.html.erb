@@ -1,5 +1,5 @@
 <%= javascript_pack_tag 'index' %>
-<%= form_tag({controller: "calc", action: "sol"}, {name: :"qinfo", onsubmit: "return checkPositive();"}) do %>
+<%= form_tag({controller: "calc", action: "sol"}, {name: :"qinfo", onsubmit: "return checkQnum();"}) do %>
 <div class="q_num" style="display:inline-flex">
 問題数を数字で入力してください:　<input type="number" name="q_num">
 </div>
