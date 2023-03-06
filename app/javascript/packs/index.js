@@ -28,91 +28,31 @@ update = function() {
     } 
     return true;
 }
-/*ex = function(){
-    let liFirst = document.createElement('h2')
-liFirst.textContent = 'lo'
-document.body.appendChild(liFirst);
 
-}*/
-ex = function(){
-    /*let liFirst = document.createElement('h2')
-liFirst.textContent = 'lo'
-document.body.appendChild(liFirst);*/
-const input1 = document.createElement("input");
-const input2 = document.createElement("h1");
-let inp = document.getElementById('info');
-let op1 = Math.floor( Math.random() * 11 );
-let op2 = Math.floor( Math.random() * 11 );
-let opecode = Math.floor( Math.random() * 2 );
-let opr = "";
-let ans = 0;
-if(opecode===0){
-    opr = "+";
-    ans = op1 + op2;
-}else{
-    opr="-";
-    ans = op1 - op2;
-}
-let state = op1 + opr + op2 + "=" 
-const text1 = document.createTextNode(state);
-     // input1.setAttribute("type", "text");
-      inp.appendChild(text1);
-      //document.appendChild(input2);
-}
-
-sun = function(){
-    /*let liFirst = document.createElement('h2')
-liFirst.textContent = 'lo'
-document.body.appendChild(liFirst);*/
-const input1 = document.createElement("input");
-const input2 = document.createElement("h1");
-let inp = document.getElementsByClassName('exp');
-console.log(inp.length);
-inp[0].setAttribute("type", "number");
-let op1 = Math.floor( Math.random() * 11 );
-let op2 = Math.floor( Math.random() * 11 );
-let opecode = Math.floor( Math.random() * 2 );
-let opr = "";
-let ans = 0;
-if(opecode===0){
-    opr = "+";
-    ans = op1 + op2;
-}else{
-    opr="-";
-    ans = op1 - op2;
-}
-let state = op1 + opr + op2 + "=" 
-const text1 = document.createTextNode(state);
-     // input1.setAttribute("type", "text");
-      inp[0].appendChild(text1);
-      inp[0].appendChild(input1);
-      //document.appendChild(input2);
-}
-an = 0;
-sun2 = function(){
+let an = 0;
+expgen = function(){
     an++;
-const input1 = document.createElement("input");
-const input2 = document.createElement("h1");
-let inp = document.getElementById('list');
-let op1 = Math.floor( Math.random() * 11 );
-let op2 = Math.floor( Math.random() * 11 );
-let opecode = Math.floor( Math.random() * 2 );
-let opr = "";
-let ans = 0;
-if(opecode===0){
-    opr = "+";
-    ans = op1 + op2;
-}else{
-    opr="-";
-    ans = op1 - op2;
-}
-let state ="(" + an +")"+ op1 + opr + op2 + "=" 
-const text1 = document.createTextNode(state);
-let li = document.createElement('li');
-li.style.display = "inline";
-li.innerHTML = state;
-      inp.appendChild(li);
-      inp.appendChild(input1);
-      let br = document.createElement( "br" );
-      inp.appendChild(br);
+    const input = document.createElement("input");
+    input.type = "number";
+    let inp = document.getElementById('exp');
+    let op1 = Math.floor( Math.random() * 11 );
+    let op2 = Math.floor( Math.random() * 11 );
+    let opecode_num = Math.floor( Math.random() * 2 );
+    let opecode = "";
+    let ans = 0;
+    if(opecode_num === 0) {
+        opecode = "+";
+        ans = op1 + op2;
+    }else{
+        opecode = "-";
+        ans = op1 - op2;
+    }
+    let state ="(" + an +") "+ op1 + opecode + op2 + "=" 
+    let li = document.createElement('li');
+    li.style.display = "inline";
+    li.innerHTML = state;
+    inp.appendChild(li);
+    inp.appendChild(input);
+    let br = document.createElement( "br" );
+    inp.appendChild(br);
 }

@@ -1,19 +1,9 @@
 <%= javascript_pack_tag 'index' %>
-<h1 style="text-align:center">第<%= @cnt %>問</h1>
-<div class="equation">
-<div class="exp" style="display:inline-flex">
-  <%= @num1 %><%= @op %><%= @num2 %>=
-  <%= form_tag({controller: "calc", action: "ans"},{name: :"ans", onsubmit: "return update();"}) do %>
-  <%= number_field_tag("input_ans", "", {class:"form-control"}) %>
-  <%= submit_tag("答え合わせ") %>
-</div>
-<br>
-</div>
+<ul id="exp">
+</ul>
 <%= hidden_field_tag("ans", @ans) %>
 <%= hidden_field_tag("cnt", @cnt) %>
 <%= hidden_field_tag("q_num", @q_num) %>
 <%= hidden_field_tag("collect", @collect) %>
-<% end %>
-<ul id="list">
-</ul>
-<input type="button" value="jjj" onclick="sun2()">
+
+<input type="button" value="式生成（仮）" onclick="expgen()">
