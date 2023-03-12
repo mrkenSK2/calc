@@ -65,13 +65,12 @@ expgen = function(num) {
     exp_part.appendChild(form);
     let br = document.createElement( "br" );
     exp_part.appendChild(br);
-    /* */
-    tmp_ans = ans;
 
     form.addEventListener("submit", (e)=>{
+        tmp_ans = ans;
         e.preventDefault();
-        expgen(num + 1);
         output_ans(form);
+        expgen(num + 1);
     });
 }
 
@@ -84,10 +83,20 @@ output_ans = function(form) {
 
     let li = document.getElementById('li' + num);
     li.innerHTML += input_ans;
+    if (check_ans(parseInt(input_ans))) {
+        li.innerHTML += " 正解";
+    } else {
+        li.innerHTML += " 不正解";
+    }
 }
 // 次の式を出す
 function exp_ge() {
 }
-// 答えを送信して成語判定
-function submit_ans() {
+// 正誤判定
+function check_ans(ans) {
+    if (ans === tmp_ans) {
+        return true;
+    } else {
+        return false;
+    }
 }
