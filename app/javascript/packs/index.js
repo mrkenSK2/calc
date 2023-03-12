@@ -57,6 +57,7 @@ expgen = function(num) {
     let exp_part = document.getElementById('exp');
     let statement ="(" + num + ") "+ op1 + opecode + op2 + "=" 
     let li = document.createElement('li');
+    li.id = "li" + String(num);
     li.style.display = "inline";
     li.innerHTML = statement;
     exp_part.appendChild(li);
@@ -70,9 +71,20 @@ expgen = function(num) {
     form.addEventListener("submit", (e)=>{
         e.preventDefault();
         expgen(num + 1);
+        output_ans(form);
     });
 }
 
+output_ans = function(form) {
+    const regex = /[^0-9]/g;
+    let num = parseInt(form.getAttribute('id').replace(regex, ""));
+    let input = document.getElementById("ans" + num);
+    let input_ans = input.value;
+    form.removeChild(input);
+
+    let li = document.getElementById('li' + num);
+    li.innerHTML += input_ans;
+}
 // 次の式を出す
 function exp_ge() {
 }
