@@ -87,6 +87,12 @@ output_ans = function(form) {
         li.innerHTML += " 正解";
     } else {
         li.innerHTML += " 不正解";
+        let exp_part = document.getElementById('exp');
+
+        let im = document.createElement('img');
+        // li.id = "li" + String(num);
+        im.src = "/assets/circle.png";
+        exp_part.appendChild(im);
     }
 }
 // 次の式を出す
