@@ -33,7 +33,7 @@ let problem_num = 0;
 let collect_num = 0;
 let tmp_ans = 0;
 
-expgen = function(num) {
+expgen = function(num, max) {
     let form = document.createElement("form");
     form.id = "q" + String(num); 
     form.style.display = "inline";
@@ -70,7 +70,11 @@ expgen = function(num) {
         tmp_ans = ans;
         e.preventDefault();
         output_ans(form);
-        expgen(num + 1);
+        if (num === max) {
+            create_view_result(max);
+        } else {
+            expgen(num + 1, max);
+        }
     });
 }
 
@@ -84,19 +88,17 @@ output_ans = function(form) {
     let li = document.getElementById('li' + num);
     li.innerHTML += input_ans;
     if (check_ans(parseInt(input_ans))) {
-        li.innerHTML += " 正解";
+        ++collect_num;
+        li.innerHTML += "　🙂 正解";
     } else {
-        li.innerHTML += " 不正解";
-        let exp_part = document.getElementById('exp');
-
-        let im = document.createElement('img');
-        // li.id = "li" + String(num);
-        im.src = "/assets/circle.png";
-        exp_part.appendChild(im);
+        li.innerHTML += "　😑 不正解";
     }
 }
-// 次の式を出す
-function exp_ge() {
+
+function create_view_result(q_num) {
+    let result = document.createElement('p');
+    result.innerHTML = q_num + "問中" + collect_num + "問正解です!!";
+    document.body.appendChild(result);
 }
 // 正誤判定
 function check_ans(ans) {
