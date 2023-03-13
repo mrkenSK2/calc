@@ -73,6 +73,7 @@ expgen = function(num, max) {
         output_ans(form);
         if (num === max) {
             create_view_result(max);
+            create_return_btn();
         } else {
             expgen(num + 1, max);
         }
@@ -100,6 +101,12 @@ function create_view_result(q_num) {
     let result = document.createElement('p');
     result.innerHTML = q_num + "問中" + collect_num + "問正解です!!";
     document.body.appendChild(result);
+}
+function create_return_btn() {
+    let result = document.createElement('a');
+    result.innerHTML = "Click Me";
+    result.setAttribute('href', "/calc");
+        document.body.appendChild(result);
 }
 // 正誤判定
 function check_ans(ans) {
