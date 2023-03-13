@@ -65,6 +65,7 @@ expgen = function(num, max) {
     exp_part.appendChild(form);
     let br = document.createElement( "br" );
     exp_part.appendChild(br);
+    input.focus();
 
     form.addEventListener("submit", (e)=>{
         tmp_ans = ans;
