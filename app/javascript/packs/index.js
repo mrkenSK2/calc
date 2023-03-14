@@ -101,6 +101,9 @@ function create_view_result(q_num) {
     let result = document.createElement('p');
     result.innerHTML = q_num + "問中" + collect_num + "問正解です!!";
     document.body.appendChild(result);
+    document.q_num = q_num;
+    let r = document.getElementById("col");
+    r.value = collect_num;
 }
 function create_return_btn() {
     let result = document.createElement('a');

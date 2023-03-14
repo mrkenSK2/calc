@@ -2,6 +2,7 @@ class CalcController < ApplicationController
     def index
         @cnt = 0
         @collect=0
+        @data = Score.all
     end
     def sol
         @cnt = params[:cnt].to_i + 1
@@ -39,5 +40,15 @@ class CalcController < ApplicationController
     
     def result
         @collect = params[:collect].to_i
+    end
+    def create
+        if request.post? then
+            obj = Score.create(
+                user: "sa",
+                total: params[:q_num],
+                collect: params[:tit]
+            )
+        end        
+        redirect_to "/calc"
     end
 end

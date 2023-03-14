@@ -8,3 +8,20 @@
 <%= hidden_field_tag("cnt", @cnt) %>
 <%= hidden_field_tag("collect", @collect) %>
 <% end %>
+
+<table class="table">
+  <tr>
+  <th>user</th><th>Total</th><th>collect</th><th>creat_at</th>
+  </tr>
+  <% @data.each do |obj| %>
+  <tr>
+  <td><%= obj.user %></td>
+  <td>
+    <%= obj.total %></a></td>
+    <td>
+    <%= obj.collect %></a></td>
+    <td>
+    <%= obj.created_at %></a></td>
+  </tr>
+  <% end %>
+</table>

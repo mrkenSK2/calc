@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   post 'calc/sol'
   post 'calc/ans'
   post 'calc/result'
+  post 'calc/create'
+  # get 'calc/create'
 end
