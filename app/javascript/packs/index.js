@@ -104,7 +104,7 @@ function create_view_result(q_num) {
 }
 function create_return_btn() {
     let result = document.createElement('a');
-    result.innerHTML = "Click Me";
+    result.innerHTML = "トップに戻る";
     result.setAttribute('href', "/calc");
         document.body.appendChild(result);
 }
