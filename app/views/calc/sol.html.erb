@@ -1,16 +1,10 @@
 <%= javascript_pack_tag 'index' %>
 <ul id="exp">
 </ul>
-<%= hidden_field_tag("ans", @ans) %>
-<%= hidden_field_tag("cnt", @cnt) %>
-
-
 <script type="text/javascript">
     window.onload = expgen(1, <%= @q_num %>);
 </script>
-
-<%= form_tag(controller: "calc", action: "create") do %>
-    <%= hidden_field_tag("q_num", @q_num) %>
-    <input type="hidden" name="tit" id="col">
-    <input type="submit">
+<%= form_tag({controller: "calc", action: "create"}, id:"send") do %>
+    <input type="hidden" name="q_num" id="q_num">
+    <input type="hidden" name="correct" id="correct">
 <% end %>

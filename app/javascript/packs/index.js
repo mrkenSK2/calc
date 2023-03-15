@@ -30,7 +30,7 @@ update = function() {
 }
 
 let problem_num = 0;
-let collect_num = 0;
+let correct_num = 0;
 let tmp_ans = 0;
 
 expgen = function(num, max) {
@@ -90,7 +90,7 @@ output_ans = function(form) {
     let li = document.getElementById('li' + num);
     li.innerHTML += input_ans;
     if (check_ans(parseInt(input_ans))) {
-        ++collect_num;
+        ++correct_num;
         li.innerHTML += "　🙂 正解";
     } else {
         li.innerHTML += "　😑 不正解";
@@ -99,18 +99,19 @@ output_ans = function(form) {
 
 function create_view_result(q_num) {
     let result = document.createElement('p');
-    result.innerHTML = q_num + "問中" + collect_num + "問正解です!!";
+    result.innerHTML = q_num + "問中" + correct_num + "問正解です!!";
     document.body.appendChild(result);
-    document.q_num = q_num;
-    let r = document.getElementById("col");
-    r.value = collect_num;
+    prepare_result(q_num, correct_num);
 }
+
 function create_return_btn() {
-    let result = document.createElement('a');
-    result.innerHTML = "トップに戻る";
-    result.setAttribute('href', "/calc");
-        document.body.appendChild(result);
+    let form = document.getElementById("send");
+    const input = document.createElement("input");
+    input.type = "submit";
+    input.value = "トップに戻る"
+    form.appendChild(input);
 }
+
 // 正誤判定
 function check_ans(ans) {
     if (ans === tmp_ans) {
@@ -118,4 +119,11 @@ function check_ans(ans) {
     } else {
         return false;
     }
+}
+
+function prepare_result(total, correct) {
+    let q_num = document.getElementById("q_num");
+    q_num.value = total;
+    let good = document.getElementById("correct");
+    good.value = correct;
 }
