@@ -3,7 +3,7 @@ class CreateScores < ActiveRecord::Migration[6.1]
     create_table :scores do |t|
       t.text :user
       t.integer :total
-      t.integer :collect
+      t.integer :correct
 
       t.timestamps
     end

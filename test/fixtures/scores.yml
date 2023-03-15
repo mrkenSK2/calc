@@ -3,9 +3,9 @@
 one:
   user: MyText
   total: 1
-  collect: 1
+  correct: 1
 
 two:
   user: MyText
   total: 1
-  collect: 1
+  correct: 1

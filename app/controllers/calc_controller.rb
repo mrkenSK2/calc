@@ -12,7 +12,7 @@ class CalcController < ApplicationController
             obj = Score.create(
                 user: "sa",
                 total: params[:q_num],
-                collect: params[:tit]
+                correct: params[:correct]
             )
         end        
         redirect_to "/calc"
