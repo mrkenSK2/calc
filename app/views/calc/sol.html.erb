@@ -4,7 +4,8 @@
 <script type="text/javascript">
     window.onload = expgen(1, <%= @q_num %>);
 </script>
-<%= form_for(@{controller: "calc", action: "create"}, id:"send") do %>
-    <input type="hidden" name="q_num" id="q_num">
-    <input type="hidden" name="correct" id="correct">
+<%= form_for(@score, url:{controller: "calc", action: "create"}, html:{id:"send"}) do |form| %>
+    <%= form.hidden_field :user, :value => "sax" %>
+    <%= form.hidden_field :total, {id: "q_num"} %>
+    <%= form.hidden_field :correct, {id: "correct"} %>
 <% end %>
