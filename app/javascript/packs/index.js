@@ -131,29 +131,19 @@ function prepare_result(total, correct) {
 
 // 開始時間
 let startTime;
-// タイムアウトID
-let timeoutID;
-
 // 時間を表示する関数
 function displayTime() {
     const time = document.getElementById('time');
-  const currentTime = new Date(Date.now() - startTime);
-  const h = String(currentTime.getHours()-9).padStart(2, '0');
-  const m = String(currentTime.getMinutes()).padStart(2, '0');
-  const s = String(currentTime.getSeconds()).padStart(2, '0');
-  const ms = String(currentTime.getMilliseconds()).padStart(3, '0');
-
-  time.textContent = `${h}:${m}:${s}.${ms}`;
-  timeoutID = setTimeout(displayTime, 10);
+    const currentTime = new Date(Date.now() - startTime);
+    const h = String(currentTime.getHours() - 9).padStart(2, '0');
+    const m = String(currentTime.getMinutes()).padStart(2, '0');
+    const s = String(currentTime.getSeconds()).padStart(2, '0');
+    const ms = String(currentTime.getMilliseconds()).padStart(3, '0');
+    time.textContent = `${h}:${m}:${s}.${ms}`;
+    setTimeout(displayTime, 10);
 }
 
-//window.addEventListener('DOMContentLoaded', function() {
-yy = function(){
-    const time = document.getElementById('time');
-  //time.textContent = '00:00:00.000';
-  time.textContent = '00:00:00.000';
-  startTime = Date.now();
-  console.log(startTime);
-  displayTime();
+timer = function(){
+    startTime = Date.now();
+    displayTime();
 }
-//});

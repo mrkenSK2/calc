@@ -5,8 +5,8 @@
 <script type="text/javascript">
     window.onload = function() {
         expgen(1, <%= @q_num %>);
-        yy();
-}
+        timer();
+    }
 </script>
 <%= form_for(@score, url:{controller: "calc", action: "create"}, html:{id:"send"}) do |form| %>
     <%= form.hidden_field :user, :value => "sax" %>
