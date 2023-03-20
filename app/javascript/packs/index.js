@@ -147,3 +147,28 @@ timer = function(){
     startTime = Date.now();
     displayTime();
 }
+
+function random_expgen() {
+    let form = document.createElement("form");
+    form.id = "q" + String(num); 
+    form.style.display = "inline";
+
+    let rawnum = Math.floor( Math.random() * 9000 ) + 1000;
+    array = [1,2,3,4];
+//    tmpnum = rawnumをスライスで桁の配列
+ //   num1 num2 tmpnumを元に
+let cursor=0;
+    while (len(array) != 0 ) {
+        idx = Math.floor( Math.random() * len(array) );
+        val = array(idx);
+
+        array.remove(idx);
+tmpnum[cursor] = rawnum[val];
+cursor++;
+
+    }
+
+}
+if (true) { // 0が上位桁
+// カットする
+}
