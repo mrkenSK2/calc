@@ -185,7 +185,7 @@ random_expgen = function(num, max, digit) {
     while (idx_lst.length != 0 ) {
         let idx = Math.floor( Math.random() * idx_lst.length );
 
-        appear_order.push(idx);
+        appear_order.push(idx_lst[idx]);
 
         val = idx_lst[idx];
         idx_lst = idx_lst.filter(n => n !== val);
@@ -204,26 +204,35 @@ random_expgen = function(num, max, digit) {
         ans = op1 - op2;
     }
     let exp_part = document.getElementById('exp');
-    let statement ="(" + num + ") "+ oporg1+ opecode + oporg2 + " ./lkokp " + op1 + opecode + op2 + "=" ;
+
     let q_no ="(" + num + ") ";
     let raw_exp = "";
     for (let i = 0; i< 4 * digit + 1; i++) {
         raw_exp += " "
     }
-    raw_exp[2*digit] = opecode;
-
+    console.log(typeof(raw_exp));
+    let begin = 2*digit+1;
+    let replace_str = opecode;
+    let before = raw_exp.slice(0, begin - 1);
+    let after = raw_exp.slice(begin);
+    let ret = before + replace_str + after;
+    raw_exp = ret;
     let li = document.createElement('li');
     li.id = "li" + String(num);
     li.style.display = "inline";
-    li.innerHTML = statement;
-    li.innerHTML = q_no;
+    li.innerHTML = q_no + raw_exp;
     exp_part.appendChild(li);
 
-    /*let counter = 0;
-    const print_grad = setInterval(function() {
+    let counter = 0;
+    let print_grad = setInterval(function() {
+        console.log(appear_order);
         counter++;
-        if (counter > digit * 2) {
+        if (counter > digit * 2-1) {
             clearInterval(print_grad);
+            let lid = document.getElementById('li' + String(num));
+            console.log(lid.innerHTML);
+            lid.innerHTML = op1 + opecode + op2 + "=";
+            console.log(lid.innerHTML);
             form.appendChild(input);
             exp_part.appendChild(form);
             let br = document.createElement( "br" );
@@ -233,23 +242,26 @@ random_expgen = function(num, max, digit) {
         let liid = document.getElementById('li' + String(num));
         let idx = appear_order.shift();
         if (idx < digit) {
-            //raw_exp[2* idx] = num_array_org[idx];
-            //li.innerHTML += q_no;
-            liid.innerHTML += q_no;
-            //exp_part.appendChild(li);
+            let start = 2* idx + 1;
+            let replace_str = num_array_org[idx];
+            let before = raw_exp.slice(0, start - 1);
+            let after = raw_exp.slice(start);
+            raw_exp = before + replace_str + after;
+
         } else {
-            //raw_exp[2* idx + 2] = num_array_org[idx];
+            let start = 2* idx + 3;
+            let replace_str = num_array_org[idx];
+            let before = raw_exp.slice(0, start - 1);
+            let after = raw_exp.slice(start);
+            raw_exp = before + replace_str + after;
         }
-        //li.innerHTML = q_no + raw_exp;
-        //exp_part.appendChild(li);
-    }, 400)*/
-
-
-    form.appendChild(input);
-    exp_part.appendChild(form);
-    let br = document.createElement( "br" );
-    exp_part.appendChild(br);
-    input.focus();
+        liid.innerHTML = q_no + raw_exp;
+        if(counter == 2*digit) {
+            let lid = document.getElementById('li' + String(num));
+            console.log(lid.innerHTML);
+            lid.innerHTML += "　　　" + op1 + opecode + op2 + "=";
+        }
+    }, 400)
 
     form.addEventListener("submit", (e)=>{
         tmp_ans = ans;
