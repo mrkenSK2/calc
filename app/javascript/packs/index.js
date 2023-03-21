@@ -205,11 +205,45 @@ random_expgen = function(num, max, digit) {
     }
     let exp_part = document.getElementById('exp');
     let statement ="(" + num + ") "+ oporg1+ opecode + oporg2 + " ./lkokp " + op1 + opecode + op2 + "=" ;
+    let q_no ="(" + num + ") ";
+    let raw_exp = "";
+    for (let i = 0; i< 4 * digit + 1; i++) {
+        raw_exp += " "
+    }
+    raw_exp[2*digit] = opecode;
+
     let li = document.createElement('li');
     li.id = "li" + String(num);
     li.style.display = "inline";
     li.innerHTML = statement;
+    li.innerHTML = q_no;
     exp_part.appendChild(li);
+
+    /*let counter = 0;
+    const print_grad = setInterval(function() {
+        counter++;
+        if (counter > digit * 2) {
+            clearInterval(print_grad);
+            form.appendChild(input);
+            exp_part.appendChild(form);
+            let br = document.createElement( "br" );
+            exp_part.appendChild(br);
+            input.focus();
+        }
+        let liid = document.getElementById('li' + String(num));
+        let idx = appear_order.shift();
+        if (idx < digit) {
+            //raw_exp[2* idx] = num_array_org[idx];
+            //li.innerHTML += q_no;
+            liid.innerHTML += q_no;
+            //exp_part.appendChild(li);
+        } else {
+            //raw_exp[2* idx + 2] = num_array_org[idx];
+        }
+        //li.innerHTML = q_no + raw_exp;
+        //exp_part.appendChild(li);
+    }, 400)*/
+
 
     form.appendChild(input);
     exp_part.appendChild(form);
