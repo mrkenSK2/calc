@@ -148,27 +148,84 @@ timer = function(){
     displayTime();
 }
 
-function random_expgen() {
+random_expgen = function(num, max, digit) {
     let form = document.createElement("form");
     form.id = "q" + String(num); 
     form.style.display = "inline";
 
-    let rawnum = Math.floor( Math.random() * 9000 ) + 1000;
-    array = [1,2,3,4];
-//    tmpnum = rawnumをスライスで桁の配列
- //   num1 num2 tmpnumを元に
-let cursor=0;
-    while (len(array) != 0 ) {
-        idx = Math.floor( Math.random() * len(array) );
-        val = array(idx);
+    let idx_lst = [];
 
-        array.remove(idx);
-tmpnum[cursor] = rawnum[val];
-cursor++;
+    let raw_num = Math.floor( Math.random() * (90 * (100 ** (digit - 1)))) + 10 * (100 ** (digit - 1));
+    let oporg1 = parseInt(String(raw_num).slice(0, digit));
+    let oporg2 = parseInt(String(raw_num).slice(-digit));
+    let opecode_num = Math.floor( Math.random() * 2 );
+    let opecode = "";
+    let ans = 0;
+    if(opecode_num === 0) {
+        opecode = "+";
+    } else {
+        opecode = "-";
+    }
+    const input = document.createElement("input");
+    input.type = "number";
+    input.id= "ans" + String(num);
 
+
+    for (let i = 0; i < 2 * digit; i++) {
+        idx_lst[i] = i;    
     }
 
-}
-if (true) { // 0が上位桁
-// カットする
+    let num_array_org = Array.from(String(raw_num), Number);
+    let tmp_array = [];
+    let cursor=0;
+
+    let appear_order = [];
+    let op1 = 0, op2 = 0;
+ 
+    while (idx_lst.length != 0 ) {
+        let idx = Math.floor( Math.random() * idx_lst.length );
+
+        appear_order.push(idx);
+
+        val = idx_lst[idx];
+        idx_lst = idx_lst.filter(n => n !== val);
+        tmp_array[cursor] = num_array_org[val];
+        cursor++;
+    }
+
+    // 半分に分けて数字化
+    for (let i = 0; i < digit; i++) {
+        op1 += tmp_array[i] *  (10 ** (digit - i - 1));
+        op2 += tmp_array[i + digit] *  (10 ** (digit - i - 1));
+    }
+    if(opecode_num === 0) {
+        ans = op1 + op2;
+    } else {
+        ans = op1 - op2;
+    }
+    let exp_part = document.getElementById('exp');
+    let statement ="(" + num + ") "+ oporg1+ opecode + oporg2 + " ./lkokp " + op1 + opecode + op2 + "=" ;
+    let li = document.createElement('li');
+    li.id = "li" + String(num);
+    li.style.display = "inline";
+    li.innerHTML = statement;
+    exp_part.appendChild(li);
+
+    form.appendChild(input);
+    exp_part.appendChild(form);
+    let br = document.createElement( "br" );
+    exp_part.appendChild(br);
+    input.focus();
+
+    form.addEventListener("submit", (e)=>{
+        tmp_ans = ans;
+        e.preventDefault();
+        output_ans(form);
+        if (num === max) {
+            create_view_result(max);
+            create_return_btn();
+        } else {
+            random_expgen(num + 1, max, digit);
+        }
+    });
 }
