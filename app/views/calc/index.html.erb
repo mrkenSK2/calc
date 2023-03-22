@@ -23,7 +23,7 @@
     <td>
     <%= obj.correct %></a></td>
     <td>
-    <%= obj.created_at %></a></td>
+    <%= obj.created_at.to_s(:datetime_jp) %></a></td>
   </tr>
   <% end %>
 </table>
