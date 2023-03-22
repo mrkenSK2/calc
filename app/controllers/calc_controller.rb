@@ -6,6 +6,7 @@ class CalcController < ApplicationController
     def sol
         @q_num = params[:q_num].to_i
         @score = Score.new
+        @username = params[:name]
     end
         
     def create

@@ -156,8 +156,6 @@ random_expgen = function(num, max, digit) {
     let idx_lst = [];
 
     let raw_num = Math.floor( Math.random() * (90 * (100 ** (digit - 1)))) + 10 * (100 ** (digit - 1));
-    let oporg1 = parseInt(String(raw_num).slice(0, digit));
-    let oporg2 = parseInt(String(raw_num).slice(-digit));
     let opecode_num = Math.floor( Math.random() * 2 );
     let opecode = "";
     let ans = 0;

@@ -4,12 +4,13 @@
 </ul>
 <script type="text/javascript">
     window.onload = function() {
-        expgen(1, <%= @q_num %>);
         timer();
+        random_expgen(1, <%= @q_num %>, 2);
+        
     }
 </script>
 <%= form_for(@score, url:{controller: "calc", action: "create"}, html:{id:"send"}) do |form| %>
-    <%= form.hidden_field :user, :value => "sax" %>
+    <%= form.hidden_field :user, :value => @username %>
     <%= form.hidden_field :total, {id: "q_num"} %>
     <%= form.hidden_field :correct, {id: "correct"} %>
 <% end %>
