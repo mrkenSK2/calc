@@ -11,18 +11,18 @@
 <input type="submit" value="ゲームスタート">
 <% end %>
 
-<table class="table">
+<table class="table" border="1" style="border-collapse: collapse">
   <tr>
-  <th>user</th><th>Total</th><th>correct</th><th>creat_at</th>
+  <th>プレイヤー</th><th>問題数</th><th>正解数</th><th>解答日</th>
   </tr>
   <% @data.each do |obj| %>
   <tr>
-  <td><%= obj.user %></td>
-  <td>
+  <td align="center"><%= obj.user %></td>
+  <td align="center">
     <%= obj.total %></a></td>
-    <td>
+    <td align="center">
     <%= obj.correct %></a></td>
-    <td>
+    <td align="center">
     <%= obj.created_at.to_s(:datetime_jp) %></a></td>
   </tr>
   <% end %>
