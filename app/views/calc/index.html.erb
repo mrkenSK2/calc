@@ -1,4 +1,6 @@
 <%= javascript_pack_tag 'index' %>
+<div class="parent">
+<div class="child">
 <%= form_tag({controller: "calc", action: "sol"}, {name: :"qinfo", onsubmit: "return checkQnum();"}) do %>
 名前:　<input type="text" name="name" required>
 <br>
@@ -27,3 +29,16 @@
   </tr>
   <% end %>
 </table>
+</div>
+
+   <div class="child explain">問題は単なる足し算引き算ですが、表示されたものと異なる式の計算を
+   <br>
+   考えてもらうものです。
+   <br>
+   指定された桁数の数字が±の記号を挟んで1桁ずつ順に表示されます。
+   <br>
+   表示された順に数字を並べて出来上がった式の答えを入力してください。
+   <br>
+   全ての桁が表示されたら、答えるべき式が右に表示されます。
+   </div>
+ </div>
