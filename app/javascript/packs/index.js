@@ -101,6 +101,11 @@ function create_view_result(q_num) {
     let result = document.createElement('p');
     result.innerHTML = q_num + "問中" + correct_num + "問正解です!!";
     document.body.appendChild(result);
+    let rslt_time = document.createElement('p');
+    let passtime = document.getElementById('time');
+
+    rslt_time.innerHTML = "かかった時間は" + passtime.innerHTML + "です!!";
+    document.body.appendChild(rslt_time);
     prepare_result(q_num, correct_num);
 }
 
@@ -131,6 +136,7 @@ function prepare_result(total, correct) {
 
 // 開始時間
 let startTime;
+let timeoutID;
 // 時間を表示する関数
 function displayTime() {
     const time = document.getElementById('time');
@@ -140,7 +146,7 @@ function displayTime() {
     const s = String(currentTime.getSeconds()).padStart(2, '0');
     const ms = String(currentTime.getMilliseconds()).padStart(3, '0');
     time.textContent = `${h}:${m}:${s}.${ms}`;
-    setTimeout(displayTime, 10);
+    timeoutID = setTimeout(displayTime, 10);
 }
 
 timer = function(){
@@ -266,6 +272,7 @@ random_expgen = function(num, max, digit) {
         e.preventDefault();
         output_ans(form);
         if (num === max) {
+            clearTimeout(timeoutID);
             create_view_result(max);
             create_return_btn();
         } else {
