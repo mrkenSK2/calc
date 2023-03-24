@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root  'calc#index'  #この1行を追加
+  get '/', to: 'calc#index'  #この1行を追加
   get 'calc/index'
   get 'calc', to: 'calc#index'
   post 'calc/sol'
