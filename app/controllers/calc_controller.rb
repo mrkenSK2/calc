@@ -1,6 +1,6 @@
 class CalcController < ApplicationController
     def index
-        @data = Score.all
+        @data = Score.all.page(params[:page])
     end
     
     def sol
