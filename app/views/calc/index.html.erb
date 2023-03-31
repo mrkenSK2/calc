@@ -1,6 +1,13 @@
 <%= javascript_pack_tag 'index' %>
-<div class="parent">
-<div class="child">
+<p class="explain">
+このサービスは、計算問題を解くアプリケーションです。<br>
+問題は2つの数字と±のみのシンプルなものです。<br>
+しかし、式の表示方法が特殊です。2つの数字がだんだん表示されていきます。<br>
+表示の順番はランダムです。<br>
+さらに、答えてもらう値は、表示された順に各桁を並べた数同士で計算したものです。<br>
+正しい式は最後に表示されますが、速く解くためには途中で頭の中で計算しなければなりません。<br>
+上手く頭を使ってやってみてください!!
+</p>
 <%= form_tag({controller: "calc", action: "sol"}, {name: :"qinfo", onsubmit: "return checkQnum();"}) do %>
 名前:　<input type="text" name="name" required>
 <br>
@@ -30,16 +37,3 @@
   <% end %>
 </table>
 <%= paginate @data %>
-</div>
-
-   <div class="child explain">問題は単なる足し算引き算ですが、表示されたものと異なる式の計算を
-   <br>
-   考えてもらうものです。
-   <br>
-   指定された桁数の数字が±の記号を挟んで1桁ずつ順に表示されます。
-   <br>
-   表示された順に数字を並べて出来上がった式の答えを入力してください。
-   <br>
-   全ての桁が表示されたら、答えるべき式が右に表示されます。
-   </div>
- </div>
