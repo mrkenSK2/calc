@@ -3,8 +3,6 @@ Rails.application.routes.draw do
   get 'calc/index'
   get 'calc', to: 'calc#index'
   get 'calc/delete/:id', to: 'calc#delete'
-  get 'calc/find'
-  post 'calc/find'
   post 'calc/sol'
   post 'calc/ans'
   post 'calc/result'

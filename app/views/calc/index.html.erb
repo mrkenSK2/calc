@@ -22,12 +22,6 @@
 <br>
 <input type="submit" value="ゲームスタート">
 <% end %>
-<br>
-<p><%= @msg %></p>
-<%= form_with url: "calc/find" do |form| %>
-<%= form.text_field :text , id: "find", placeholder: "調べたいプレイヤー名を入力してください"%>
-<%= form.submit "検索" %>
-<% end %>
 
 <table class="table" border="1" style="border-collapse: collapse">
   <tr>
