@@ -15,6 +15,16 @@ class CalcController < ApplicationController
         obj.destroy
         redirect_to "/calc"
     end
+
+    def find
+        @msg = '検索したいプレイヤー名を入力してください'
+        @data = Array.new
+        if request.post? then
+          obj = Score.where user: params['find']
+          #@data.push obj
+          redirect_to "/calc"
+        end
+      end
         
     def create
         if request.post? then
