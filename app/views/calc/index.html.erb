@@ -25,7 +25,7 @@
 
 <table class="table" border="1" style="border-collapse: collapse">
   <tr>
-  <th>プレイヤー</th><th>問題数</th><th>正解数</th><th>解答日</th>
+  <th>プレイヤー</th><th>問題数</th><th>正解数</th><th>解答日</th><th></th>
   </tr>
   <% @data.each do |obj| %>
   <tr>
@@ -36,7 +36,16 @@
     <%= obj.correct %></a></td>
     <td align="center">
     <%= obj.created_at.to_s(:datetime_jp) %></a></td>
+    <td><a href="javascript:delData(<%= obj.id %>);">削除</a></td>
   </tr>
   <% end %>
 </table>
 <%= paginate @data %>
+<script>
+function delData(num) {
+  if (confirm('このデータを削除しますか？')) {
+    document.location = "/calc/delete/" + num;
+  }
+  return false;
+}
+</script>

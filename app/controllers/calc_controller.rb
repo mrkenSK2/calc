@@ -9,6 +9,12 @@ class CalcController < ApplicationController
         @username = params[:name]
         @digit = params[:digit]
     end
+
+    def delete
+        obj = Score.find(params[:id])
+        obj.destroy
+        redirect_to "/calc"
+    end
         
     def create
         if request.post? then
