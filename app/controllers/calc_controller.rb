@@ -1,9 +1,11 @@
 class CalcController < ApplicationController
     def index
-        if params[:find].present?
-            @ko = "ihuihiuh"
+        if not params[:find].present?
+            @data = Score.all.page(params[:page])
+        else
+            @data = Array.new
+            @data = Score.where user: params[:find].page(params[:page])
         end    
-        @data = Score.all.page(params[:page])
     end
     
     def sol
@@ -23,15 +25,6 @@ class CalcController < ApplicationController
         if request.post? then
             Score.create(score_params)
         end        
-        redirect_to "/calc"
-    end
-
-    def find
-        @ko = params[:text]
-        @score = Array.new
-        if request.post? then
-            @data = Score.where name: params[:find]
-        end
         redirect_to "/calc"
     end
 
