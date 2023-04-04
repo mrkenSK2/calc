@@ -22,6 +22,12 @@
 <br>
 <input type="submit" value="ゲームスタート">
 <% end %>
+<br>
+プレイヤー名で検索
+<%= search_form_for(@q, url: "calc", method: :get) do |form| %>
+<%= form.text_field :user_cont %>
+<%= form.submit "検索" %>
+<% end %>
 
 <table class="table" border="1" style="border-collapse: collapse">
   <tr>
@@ -40,7 +46,6 @@
   </tr>
   <% end %>
 </table>
-<%= paginate @data %>
 <script>
 function delData(num) {
   if (confirm('このデータを削除しますか？')) {

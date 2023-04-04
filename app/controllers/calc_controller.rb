@@ -1,11 +1,7 @@
 class CalcController < ApplicationController
     def index
-        if not params[:find].present?
-            @data = Score.all.page(params[:page])
-        else
-            @data = Array.new
-            @data = Score.where user: params[:find].page(params[:page])
-        end    
+        @q = Score.ransack(params[:q])
+        @data = @q.result(distinct: true) 
     end
     
     def sol
