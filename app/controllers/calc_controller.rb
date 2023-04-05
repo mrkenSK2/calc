@@ -1,7 +1,7 @@
 class CalcController < ApplicationController
     def index
         @q = Score.ransack(params[:q])
-        @data = @q.result(distinct: true) 
+        @data = @q.result(distinct: true).page(params[:page])
     end
     
     def sol
